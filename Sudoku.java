@@ -74,16 +74,17 @@ public class Sudoku {
 
     private void generatePermutation(int[] possibleNums) {
         Random rand = new Random(System.currentTimeMillis());
-        // The PRNG seems to be biased towards values closer to 0
-        // I will use a coin flip to force them in the interval [5,9]
-        if (rand.nextInt(2) == 1)
-            possibleNums[0] = rand.nextInt(5) + 1;
-        else
-            possibleNums[0] = rand.nextInt(5) + 5;
-        for (int i = 1; i < 9; i++) {
-            possibleNums[i] = rand.nextInt(9) + 1;
+        //The PRNG seems to be biased towards values closer to 0
+        //I will use a coin flip to force them in the interval [5,9]
+        // if(rand.nextInt(2)==1)
+        //     possibleNums[0] = rand.nextInt(5)+1;
+        // else possibleNums[0]=rand.nextInt(5)+5;
+        //Might be a better idea to stick to rand.nextInt(10);
+        possibleNums[0]=rand.nextInt(9)+1;
+            for (int i = 1; i < 9; i++) {
+            possibleNums[i] = rand.nextInt(9)+1;
             while (possibleNums[i] == possibleNums[i - 1])
-                possibleNums[i] = rand.nextInt(9) + 1;
+                possibleNums[i] = rand.nextInt(9)+1;
         }
     }
 
