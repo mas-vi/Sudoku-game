@@ -74,15 +74,16 @@ public class Sudoku {
 
     private void generatePermutation(int[] possibleNums) {
         Random rand = new Random(System.currentTimeMillis());
-        //The PRNG seems to be biased towards values closer to 0
-        //I will use a coin flip to force them in the interval [5,9]
-        if(rand.nextInt(2)==1)
-            possibleNums[0] = rand.nextInt(5)+1;
-        else possibleNums[0]=rand.nextInt(5)+5;
-            for (int i = 1; i < 9; i++) {
-            possibleNums[i] = rand.nextInt(9)+1;
+        // The PRNG seems to be biased towards values closer to 0
+        // I will use a coin flip to force them in the interval [5,9]
+        if (rand.nextInt(2) == 1)
+            possibleNums[0] = rand.nextInt(5) + 1;
+        else
+            possibleNums[0] = rand.nextInt(5) + 5;
+        for (int i = 1; i < 9; i++) {
+            possibleNums[i] = rand.nextInt(9) + 1;
             while (possibleNums[i] == possibleNums[i - 1])
-                possibleNums[i] = rand.nextInt(9)+1;
+                possibleNums[i] = rand.nextInt(9) + 1;
         }
     }
 
@@ -113,6 +114,7 @@ public class Sudoku {
     }
 
     public void generateBoard() {
+        Random rand = new Random(System.currentTimeMillis());
         for (int i = 0; i < dim; i++)
             for (int j = 0; j < dim; j++) {
                 matrix[i][j] = 0;
@@ -120,8 +122,8 @@ public class Sudoku {
         generateBoardSolver();
         int deleteCount = 64;
         while (deleteCount > 0) {
-            int i = (int) (Math.random() * 9);
-            int j = (int) (Math.random() * 9);
+            int i = (int) (rand.nextInt(9));
+            int j = (int) (rand.nextInt(9));
             if (matrix[i][j] != 0) {
                 matrix[i][j] = 0;
                 deleteCount--;
