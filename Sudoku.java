@@ -79,7 +79,7 @@ public class Sudoku {
         // if(rand.nextInt(2)==1)
         //     possibleNums[0] = rand.nextInt(5)+1;
         // else possibleNums[0]=rand.nextInt(5)+5;
-        //Might be a better idea to stick to rand.nextInt(10);
+        //Might be a better idea to stick to rand.nextInt(9)+1;
         possibleNums[0]=rand.nextInt(9)+1;
             for (int i = 1; i < 9; i++) {
             possibleNums[i] = rand.nextInt(9)+1;
